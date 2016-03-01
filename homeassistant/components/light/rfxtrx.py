@@ -164,15 +164,13 @@ class RfxtrxLight(Light):
         brightness = kwargs.get(ATTR_BRIGHTNESS)
         if not self._event:
             return
-        print(kwargs)
-        print(ATTR_BRIGHTNESS)
         if brightness is None:
             self._brightness = 255
             for _ in range(self.signal_repetitions):
                 self._event.device.send_on(rfxtrx.RFXOBJECT.transport)
         else:
             self._brightness = brightness
-            _brightness = ((brightness ) * 100 // 255 )
+            _brightness = (brightness * 100 // 255)
             for _ in range(self.signal_repetitions):
                 self._event.device.send_dim(rfxtrx.RFXOBJECT.transport,
                                             _brightness)
