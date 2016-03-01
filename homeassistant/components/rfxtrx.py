@@ -59,7 +59,7 @@ def setup(hass, config):
 
     if ATTR_DEVICE not in config[DOMAIN]:
         _LOGGER.exception(
-            "can found device parameter in %s YAML configuration section",
+            "can not find device parameter in %s YAML configuration section",
             DOMAIN
         )
         return False
