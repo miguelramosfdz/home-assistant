@@ -225,6 +225,9 @@ class TestLightRfxtrx(unittest.TestCase):
         self.assertEqual(0, len(rfxtrx_core.RFX_DEVICES))
         self.assertEqual(0, len(devices))
 
+        event = rfxtrx_core.get_rfx_object('0b1100120118cdea02010070')
+        event.data = bytearray([0x0b, 0x11, 0x00, 0x12, 0x01, 0x18,
+                                0xcd, 0xea, 0x02, 0x01, 0x00, 0x70])
         with patch('homeassistant.components.light.' +
                    'rfxtrx.RfxtrxLight.update_ha_state',
                    return_value=None):
